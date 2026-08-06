@@ -48,8 +48,8 @@
         ["NSW Contractor Licence", "462852C"],
         ["Address", "14 Martin Place, Sydney"],
         ["Directors", "Scott Wilcox"],
-        ["Mobile", "0413 688 220"],
-        ["Email", "scott@w.build"]
+        ["Mobile", "0498 178 678"],
+        ["Email", "nick@w.build"]
       ],
       documents: [
         ...nationalInsurance,

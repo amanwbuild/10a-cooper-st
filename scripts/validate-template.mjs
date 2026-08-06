@@ -48,6 +48,10 @@ portfolio.forEach((project, index) => {
 
 check(config.pages.find(page => page.id === 'cost')?.title === 'Opinion of Probable Cost', 'The cost-page title must be Opinion of Probable Cost.');
 check(config.pages.find(page => page.id === 'case-studies')?.title === 'Case Studies', 'The case-studies title must be Case Studies.');
+check(html.includes('<div class="name">Nick Myhal</div>'), 'The closing contact must be Nick Myhal.');
+check(!html.includes('<div class="role">Builder</div>'), 'The Builder subtitle must be removed from the closing contact.');
+check(html.includes('href="tel:+61498178678">0498 178 678</a>'), 'The closing phone number is incorrect.');
+check(html.includes('href="mailto:nick@w.build">nick@w.build</a>'), 'The closing email address is incorrect.');
 check(/<div id="caseStudyProjects"><\/div>/.test(html), 'The Case Studies mount point is missing.');
 const expectedCaseStudies = ['mermaid', 'canterbury', 'terralsole'];
 check(JSON.stringify(config.caseStudies) === JSON.stringify(expectedCaseStudies), 'Case Studies must be Mermaid, Canterbury and Terralsole.');
@@ -72,6 +76,9 @@ for (const [stateCode, state] of Object.entries(documents.business)) {
   checkFile(state.source, `${stateCode} business-details source`);
   for (const document of state.documents) documentPaths.add(document.file);
 }
+const nswDetails = new Map(documents.business.NSW.details);
+check(nswDetails.get('Mobile') === '0498 178 678', 'The NSW business-details mobile number is incorrect.');
+check(nswDetails.get('Email') === 'nick@w.build', 'The NSW business-details email address is incorrect.');
 for (const documentPath of documentPaths) checkFile(documentPath, 'Indexed document');
 
 checkFile('assets/source/Projects in order.xlsx', 'Portfolio-order source workbook');
