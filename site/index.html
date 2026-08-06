@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>W. TEMPLATE · Private Proposal</title>
+<meta property="og:title" content="W. TEMPLATE · Private Proposal">
+<meta property="og:description" content="Reusable private proposal template.">
+<meta property="og:image" content="hero-shot.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<style>
+  /* fonts ship in ./fonts so the page works offline / via file:// */
+  @font-face{
+    font-family:'Archivo';
+    src:url('fonts/archivo-var.woff2') format('woff2');
+    font-weight:400 800;
+    font-stretch:100% 125%;
+    font-style:normal;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Spline Sans Mono';
+    src:url('fonts/spline-sans-mono-var.woff2') format('woff2');
+    font-weight:400 700;
+    font-style:normal;
+    font-display:swap;
+  }
+  :root{
+    --gold:#B3823A; --gold-deep:#6E4A14; --concrete:#252A27; --steel:#6D6E6F;
+    --ink:#1E211F; --line:#DFDACC; --paper:#F2EFE6; --paper-2:#FAF8F1; --bone:#E9E4D6;
+    --fg:#252A27; --fg-muted:#6D6E6F; --fg-on-dark:#F6F5F0; --fg-on-dark-muted:#97999A;
+    --font-display:'Archivo',system-ui,sans-serif;
+    --font-mono:'Spline Sans Mono',ui-monospace,monospace;
+    --wide:'wdth' 125;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--paper);color:var(--fg);font-family:var(--font-display);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;}
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{max-width:1060px;margin:0 auto;padding:0 28px;width:100%;}
+  .topbar{display:flex;align-items:center;justify-content:flex-end;gap:16px;padding:26px 0 0;}
+  .brandline{display:flex;align-items:center;gap:14px;}
+  .brandline img.wlogo{width:min(448px,calc(100vw - 44px));height:auto;display:block;}
+
+  h1{font-variation-settings:var(--wide);font-weight:800;font-size:clamp(30px,4.4vw,52px);
+    line-height:1.02;letter-spacing:-.014em;margin-top:24px;}
+  h1.addr{font-size:clamp(26px,3.9vw,44px);letter-spacing:-.02em;}
+  @media(min-width:760px){ h1.addr{white-space:nowrap;} }
+  h1[tabindex],h2[tabindex]{outline:none;}
+  .accent{color:var(--gold);}
+  h2{font-variation-settings:var(--wide);font-weight:800;font-size:clamp(22px,2.8vw,34px);
+    line-height:1.05;letter-spacing:-.01em;margin-top:16px;}
+  .lead{font-size:17px;color:var(--fg-muted);margin-top:18px;line-height:1.65;}
+  .hero{display:none;margin-top:24px;border-radius:14px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 24px 60px rgba(37,42,39,.12);}
+  .hero.show{display:block;}
+  .hero img{width:100%;height:clamp(220px,40vw,520px);object-fit:cover;display:block;}
+  .lead strong{color:var(--fg);font-weight:600;}
+  .docs{margin-top:12px;list-style:none;}
+  .docs li{position:relative;padding-left:26px;font-size:17px;font-weight:600;color:var(--fg);line-height:1.6;margin-top:8px;}
+  .docs li::before{content:"";position:absolute;left:4px;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--gold);}
+  .centerhead{margin:0 auto;}
+
+  .rule{border:none;border-top:3px solid var(--ink);margin:44px 0 0;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding:38px 0 8px;}
+  .stat .n{font-variation-settings:var(--wide);font-weight:800;font-size:clamp(38px,5vw,58px);line-height:1;letter-spacing:-.02em;}
+  .stat .n sup{font-size:.45em;color:var(--gold);font-weight:800;}
+  .stat .d{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.08em;color:var(--steel);margin-top:10px;text-transform:lowercase;line-height:1.5;}
+  .stats.stats3{grid-template-columns:repeat(3,1fr);}
+
+  .sec-head{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap;padding:26px 0 0;margin-bottom:6px;}
+  .sec-head .bl{display:flex;align-items:center;gap:14px;}
+  .sec-head .bl img.wlogo{width:min(448px,calc(100vw - 44px));height:auto;display:block;}
+
+  .exlist{margin-top:30px;}
+  .exrow{display:grid;grid-template-columns:46px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--line);}
+  .exrow:last-child{border-bottom:1px solid var(--line);}
+  .exrow .num{font-family:var(--font-mono);font-weight:600;font-size:11px;color:var(--gold);padding-top:3px;}
+  .exrow p{font-size:14.5px;color:var(--fg-muted);line-height:1.6;}
+  .exclusions{margin-top:48px;}
+  .exclusions .exhead{font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--steel);margin-bottom:6px;}
+  .exclusions .exlist{margin-top:0;max-width:none;}
+  .exclusions .exrow{grid-template-columns:34px 1fr;padding:9px 0;}
+  .exclusions .exrow .num{font-size:10px;color:var(--steel);}
+  .exclusions .exrow p{font-size:12.5px;color:var(--steel);line-height:1.55;}
+  .exclusions .exline{font-size:12.5px;color:var(--steel);line-height:1.55;padding:9px 0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+  /* ---------- COST PLAN TABLE ---------- */
+  .trades{margin-top:24px;columns:2;column-gap:18px;}
+  .trade{break-inside:avoid;background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:10px;padding:16px 18px 12px;margin-bottom:18px;}
+  .trade-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+    padding-bottom:10px;border-bottom:1px solid var(--line);}
+  .trade-head h4{font-weight:700;font-size:16.5px;letter-spacing:-.004em;line-height:1.25;}
+  .trade-head .amt{font-family:var(--font-mono);font-weight:600;font-size:14.5px;white-space:nowrap;color:var(--fg);}
+  .trow{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:7.5px 0;
+    border-top:1px dotted var(--line);font-size:13.5px;}
+  .trow:first-of-type{border-top:none;padding-top:11px;}
+  .trow .nm{color:var(--fg);line-height:1.4;}
+  .trow .amt{font-family:var(--font-mono);font-size:13px;white-space:nowrap;color:var(--fg);}
+  .trow .amt.txt{white-space:normal;text-align:right;max-width:62%;}
+  .trow.sub .nm{color:var(--fg-muted);}
+  .pill-inc{font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;border-radius:999px;padding:3px 10px;white-space:nowrap;
+    color:var(--gold-deep);background:rgba(179,130,58,.12);border:1px solid rgba(179,130,58,.35);}
+
+  /* ---------- OPC COMPARISON TABLE ---------- */
+  .opc-scroll{margin-top:24px;overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--paper-2);}
+  .opc{width:100%;border-collapse:collapse;min-width:560px;}
+  .opc th{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--steel);font-weight:600;padding:10px 10px 8px;text-align:left;vertical-align:bottom;}
+  .opc thead tr:last-child th{border-bottom:2px solid var(--ink);}
+  .opc th.r{text-align:right;}
+  .opc th.grp{text-align:center;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:6px;}
+  .opc th.cp{color:var(--gold);}
+  .opc td{font-size:12.5px;padding:7px 10px;border-top:1px dotted var(--line);vertical-align:top;line-height:1.45;}
+  .opc td.r{font-family:var(--font-mono);font-size:11.5px;text-align:right;white-space:nowrap;}
+  .opc td.st{color:var(--steel);font-size:10px;letter-spacing:.06em;text-transform:uppercase;}
+  .opc td.cp{background:rgba(179,130,58,.08);font-weight:600;}
+  .opc td.sv{color:var(--gold-deep);font-weight:600;}
+  .opc td.cm{font-size:11px;color:var(--fg-muted);min-width:130px;}
+  .opc tr.sec td{font-weight:700;font-size:13px;padding-top:15px;border-top:1px solid var(--line);}
+  .opc tr.tot td{border-top:2px solid var(--ink);font-weight:600;padding:11px 10px;}
+  .opc tr.grand td{font-weight:800;font-size:13.5px;}
+  .opc tbody tr:first-child td{border-top:none;}
+
+  .totals{margin-top:28px;border-top:3px solid var(--ink);}
+  .totals .trow{font-size:15px;padding:13px 0;border-top:1px solid var(--line);}
+  .totals .trow:first-of-type{border-top:none;}
+  .totals .trow .nm{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);}
+  .totals .trow .amt{font-size:16px;font-weight:600;}
+  .totals .trow.grand .nm{color:var(--gold);font-weight:600;}
+  .totals .trow.grand .amt{font-variation-settings:var(--wide);font-family:var(--font-display);font-weight:800;font-size:clamp(24px,3vw,32px);letter-spacing:-.01em;}
+
+  /* ---------- PAGES & PAGER ---------- */
+  main{flex:1;}
+  .page{display:none;}
+  .page.active{display:block;animation:pagein .5s ease;}
+  @keyframes pagein{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+  .pagenav{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    margin-top:52px;padding:22px 0 64px;border-top:3px solid var(--ink);}
+  .pn-btn{font-family:var(--font-mono);font-weight:600;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;cursor:pointer;border-radius:999px;padding:14px 26px;
+    transition:transform .15s ease, box-shadow .15s ease;appearance:none;-webkit-appearance:none;}
+  .pn-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .pn-back{background:none;border:1px solid var(--line);color:var(--steel);}
+  .pn-back:hover{border-color:var(--steel);color:var(--fg);}
+  .pn-next{background:linear-gradient(180deg,#B3823A 0%,#6E4A14 100%);border:none;color:var(--fg-on-dark);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 6px 20px rgba(179,130,58,.28);}
+  .pn-next:hover{transform:translateY(-1px);}
+  .pn-ghost{visibility:hidden;}
+  .pn-ind{font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;color:var(--steel);white-space:nowrap;}
+  .pn-ind b{color:var(--gold);font-weight:600;}
+  .pn-right{display:flex;align-items:center;gap:14px;}
+  .pn-cue{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-weight:600;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+  .pn-cue .arr{display:inline-block;font-size:15px;line-height:1;animation:nudge 1.2s ease-in-out infinite;}
+  @keyframes nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(6px);}}
+
+  /* ---------- FINALE ---------- */
+  .finale{position:relative;background:var(--concrete);color:var(--fg-on-dark);
+    min-height:100vh;min-height:100dvh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:56px 28px 64px;overflow:hidden;}
+  .finale::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 30%, rgba(179,130,58,.18) 0%, transparent 60%);}
+  .finale > *{position:relative;z-index:1;}
+  .fin-q{font-variation-settings:var(--wide);font-weight:800;font-size:clamp(24px,3.4vw,42px);
+    line-height:1.12;letter-spacing:-.012em;color:var(--fg-on-dark);margin-top:0;}
+  .fin-sub{margin-top:14px;font-size:clamp(15px,2vw,19px);color:var(--fg-on-dark-muted);line-height:1.5;}
+  .fin-contact{margin-top:30px;display:flex;flex-direction:column;gap:5px;}
+  .fin-contact .name{font-weight:700;font-size:18px;letter-spacing:.01em;}
+  .fin-contact .role{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+  .fin-cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .fin-cta a{font-family:var(--font-mono);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    text-decoration:none;border-radius:999px;padding:14px 30px;transition:transform .15s ease, box-shadow .15s ease;}
+  .fin-cta a.gold{color:var(--fg-on-dark);background:linear-gradient(180deg,#B3823A 0%,#6E4A14 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 10px 34px rgba(179,130,58,.35);}
+  .fin-cta a.gold:hover{transform:translateY(-2px);}
+  .fin-cta a.ghost{color:var(--fg-on-dark);border:1px solid rgba(255,255,255,.22);}
+  .fin-cta a.ghost:hover{border-color:var(--gold);color:var(--gold);}
+  .fin-foot{margin-top:48px;padding-top:34px;border-top:1px solid rgba(255,255,255,.16);width:min(660px,100%);
+    display:flex;flex-direction:column;align-items:center;}
+  .wbuild img{width:min(474px,calc(100vw - 56px));height:auto;display:block;}
+  .fin-tagline{margin-top:12px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--fg-on-dark-muted);}
+  .fin-social{margin-top:28px;display:flex;align-items:center;justify-content:center;gap:44px;}
+  .fin-social a{display:flex;align-items:center;color:var(--gold);opacity:.85;transition:opacity .15s ease, transform .15s ease;}
+  .fin-social a:hover{opacity:1;transform:translateY(-2px);}
+  .fin-social a:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:4px;}
+  .fin-social img{height:20px;display:block;}
+  .fin-social svg{height:24px;width:24px;display:block;}
+  .fin-back{margin-top:34px;background:none;border:none;color:var(--fg-on-dark-muted);font-family:var(--font-mono);
+    font-size:11px;letter-spacing:.1em;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+  .fin-back:hover{color:var(--fg-on-dark);}
+  .fin-back:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  /* ---------- CAROUSEL ---------- */
+  .dr-car{position:relative;width:min(1100px,100%);margin-bottom:30px;}
+  .dr-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:none;-ms-overflow-style:none;border-radius:12px;}
+  .dr-track::-webkit-scrollbar{display:none;}
+  .dr-track img{height:430px;width:auto;flex:none;border-radius:10px;scroll-snap-align:start;
+    border:1px solid rgba(255,255,255,.16);}
+  .dr-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;
+    border:none;cursor:pointer;font-size:17px;line-height:1;color:#fff;
+    background:rgba(30,33,31,.72);transition:background .15s ease;z-index:1;}
+  .dr-nav:hover{background:var(--gold);}
+  .dr-nav.prev{left:14px;}
+  .dr-nav.next{right:14px;}
+  .proj .dr-car{margin-bottom:8px;}
+  .proj .dr-track img{border-color:var(--line);}
+
+  /* ---------- PROJECTS ---------- */
+  .proj{margin-top:52px;}
+  .proj-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:10px;}
+  .proj-head h3{font-variation-settings:var(--wide);font-weight:800;font-size:clamp(19px,2.2vw,25px);letter-spacing:-.008em;}
+  .proj-head .pd{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+  .proj-copy{color:var(--fg-muted);font-size:15.5px;line-height:1.65;margin:0 0 18px;}
+  .proj-copy a{color:var(--gold-deep);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+  .proj-copy a:hover{color:var(--gold);}
+
+  /* dream-number levers: copy beside media on desktop, stacked + centred on mobile */
+  .lever{display:grid;grid-template-columns:1.1fr .9fr;gap:24px 48px;align-items:center;margin-top:6px;}
+  .lever .proj-copy{margin:0;}
+  .lv-media{display:flex;justify-content:center;min-width:0;}
+  .lv-media .igcard{width:min(340px,100%);}
+  .lv-media .trade{width:100%;max-width:480px;margin:0;}
+  @media(max-width:880px){
+    .lever{grid-template-columns:1fr;gap:18px;}
+  }
+
+  .igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .igcard{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:20px;
+    display:flex;flex-direction:column;align-items:flex-start;gap:12px;cursor:pointer;text-align:left;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;appearance:none;font:inherit;color:inherit;
+    text-decoration:none;}
+  .igcard:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(37,42,39,.12);border-color:var(--gold);}
+  .igcard:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .igcard svg{height:26px;width:26px;color:var(--gold);}
+  .igcard .t{font-weight:700;font-size:15px;letter-spacing:-.004em;}
+  .igcard .u{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);}
+  .igcard .open{margin-top:2px;font-family:var(--font-mono);font-size:10.5px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);}
+  .proj .igrid{margin-top:14px;}
+  .igcard .s{font-size:12.5px;color:var(--fg-muted);line-height:1.55;}
+  .igcard.static{cursor:default;gap:8px;}
+  .igcard.static:hover{transform:none;box-shadow:none;border-color:var(--line);}
+  .igcard .rl{font-size:13px;color:var(--fg);line-height:1.65;}
+  .igcard .rl a{color:var(--gold-deep);font-weight:600;text-decoration:none;}
+  .igcard .rl a:hover{text-decoration:underline;text-underline-offset:3px;}
+  .igcard .refimg{width:100%;height:170px;object-fit:cover;border-radius:8px;border:1px solid var(--line);}
+  .igcard ul.clist{list-style:none;margin:0;display:flex;flex-direction:column;gap:5px;}
+  .clist li{position:relative;padding-left:16px;font-size:12.5px;color:var(--fg-muted);line-height:1.5;}
+  .clist li::before{content:"";position:absolute;left:2px;top:.52em;width:5px;height:5px;border-radius:50%;background:var(--gold);}
+  .igrid.grid2{grid-template-columns:repeat(2,1fr);}
+  .side2{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;align-items:start;}
+  .side2 .proj-head{flex-direction:column;align-items:flex-start;gap:6px;}
+  .side2 .igrid{grid-template-columns:1fr;}
+
+  /* phone app showcases */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:44px;width:100%;max-width:1000px;margin:30px auto 0;align-items:center;}
+  .duo img{width:100%;height:auto;display:block;border:0;border-radius:0;background:transparent;box-shadow:none;}
+  @media(max-width:720px){ .duo{grid-template-columns:1fr;} }
+
+  /* ---------- ONE PROMISE. TRUE ALIGNMENT. ---------- */
+  .promise{margin-top:34px;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:44px 30px 46px;text-align:center;}
+  .promise .p-sub{font-size:13.5px;color:var(--fg-muted);}
+  .promise .p-item{margin:46px auto 0;max-width:560px;}
+  .promise .p-item h4{font-variation-settings:var(--wide);font-weight:600;font-size:13.5px;
+    letter-spacing:.16em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  .promise .p-item p{margin-top:12px;font-size:13.5px;color:var(--fg-muted);line-height:1.65;}
+  .promise .p-final{margin-top:52px;font-variation-settings:var(--wide);font-weight:700;
+    font-size:clamp(14px,1.9vw,18px);letter-spacing:.1em;text-transform:uppercase;}
+
+  /* ---------- MATTERPORT ---------- */
+  .mp-embed{margin-top:18px;border-radius:14px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 24px 60px rgba(37,42,39,.12);background:var(--concrete);}
+  .mp-embed iframe{display:block;width:100%;height:clamp(340px,52vw,560px);border:0;}
+
+  #igModal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+    background:rgba(30,33,31,.78);padding:22px;}
+  #igModal.open{display:flex;}
+  .ig-box{position:relative;width:min(620px,94vw);max-height:94vh;background:#fff;border-radius:14px;
+    overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5);}
+  .ig-box iframe{display:block;width:100%;height:min(1000px,88vh);border:0;background:#fff;}
+  .ig-close{position:absolute;top:8px;right:8px;z-index:2;width:34px;height:34px;border-radius:50%;
+    border:none;background:rgba(30,33,31,.75);color:#fff;font-size:18px;line-height:1;cursor:pointer;}
+  .ig-close:hover{background:var(--gold);}
+  .ig-box.doc{width:min(960px,94vw);}
+  .ig-box.sheet{width:min(1100px,96vw);background:var(--paper);}
+  .ig-dl{display:none;position:absolute;top:8px;left:8px;z-index:2;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:linear-gradient(180deg,#B3823A 0%,#6E4A14 100%);border-radius:999px;
+    padding:9px 16px;text-decoration:none;}
+  .sheet-preview{height:min(1000px,88vh);overflow:auto;padding:64px 30px 32px;background:var(--paper);}
+  .sheet-preview-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px;}
+  .sheet-preview-head h3{font-variation-settings:var(--wide);font-size:clamp(20px,3vw,30px);font-weight:800;}
+  .sheet-preview-head span{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);}
+  .sheet-preview .opc-scroll{margin-top:0;background:var(--paper-2);}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;}
+  .rv.in{opacity:1;transform:none;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    .trades{columns:1;}
+    .igrid{grid-template-columns:1fr;}
+    .igrid.grid2{grid-template-columns:1fr;}
+    .side2{grid-template-columns:1fr;}
+  }
+  @media(max-width:720px){
+    .stats{grid-template-columns:repeat(2,1fr);gap:22px;}
+    .stats.stats3{grid-template-columns:repeat(3,1fr);gap:12px;}
+    .stats.stats3 .stat .n{font-size:26px;letter-spacing:-.01em;}
+    .stats.stats3 .stat .d{font-size:9.5px;letter-spacing:.04em;margin-top:7px;}
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 22px;}
+    .exrow{grid-template-columns:36px 1fr;}
+    .pagenav{flex-wrap:wrap;}
+    .pn-ind{order:-1;width:100%;text-align:center;margin-bottom:10px;}
+    .pn-btn{text-align:center;padding:14px 8px;font-size:11px;letter-spacing:.08em;}
+    .pn-right{width:100%;justify-content:flex-end;}
+    .pn-right .pn-btn{flex:1;}
+    .pn-back{order:3;width:100%;margin-top:10px;}
+    .pn-ghost{display:none;}
+    #igModal{padding:0;}
+    .ig-box{width:100vw;height:100dvh;max-height:100dvh;border-radius:0;}
+    .ig-box iframe{height:100dvh;}
+    .sheet-preview{height:100dvh;padding:64px 14px 24px;}
+    .sheet-preview-head{align-items:flex-start;flex-direction:column;gap:5px;}
+    .dr-track img{height:280px;}
+    .dr-nav{width:36px;height:36px;}
+    .promise{padding:6px 20px 38px;}
+  }
+
+  /* ---------- PASSCODE GATE ---------- */
+  #gate{position:fixed;inset:0;z-index:1000;background:var(--paper);
+    display:flex;align-items:center;justify-content:center;padding:28px;}
+  #gate.hide{display:none;}
+  .gate-inner{width:100%;max-width:360px;text-align:center;}
+  .gate-inner img.wlogo{width:min(500px,calc(100vw - 56px));height:auto;display:block;
+    margin:0 0 30px 50%;transform:translateX(-50%);}
+  .gate-inner .lead{margin-top:0;font-size:15px;}
+  .gate-form{display:flex;gap:10px;margin-top:22px;}
+  .gate-form input{flex:1;min-width:0;font-family:var(--font-mono);font-size:18px;
+    letter-spacing:.3em;text-align:center;padding:13px 14px;color:var(--ink);
+    background:var(--paper-2);border:1px solid var(--line);border-radius:8px;outline:none;}
+  .gate-form input:focus{border-color:var(--gold);}
+  .gate-form button{font-family:var(--font-display);font-variation-settings:var(--wide);
+    font-weight:700;font-size:14px;color:var(--fg-on-dark);background:var(--concrete);
+    border:none;border-radius:8px;padding:0 20px;cursor:pointer;}
+  .gate-err{color:var(--gold-deep);font-family:var(--font-mono);font-size:13px;
+    margin-top:14px;min-height:1.2em;opacity:0;transition:opacity .15s;}
+  .gate-err.show{opacity:1;}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gate-inner">
+    <img class="wlogo" src="w-template.png" alt="W. Template">
+    <p class="lead">Please enter the passcode to view this proposal.</p>
+    <form class="gate-form" id="gateForm">
+      <input id="gateInput" type="password" inputmode="numeric" autocomplete="off"
+             aria-label="Passcode" placeholder="••••" maxlength="8">
+      <button type="submit">Enter</button>
+    </form>
+    <p class="gate-err" id="gateErr" role="alert">Incorrect passcode.</p>
+  </div>
+</div>
+
+<main>
+<!-- ============ PAGE 1 · THE SUBMISSION ============ -->
+<div class="page" data-page="1" data-section="submission">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brandline">
+        <img class="wlogo" src="w-template.png" alt="W. Template">
+      </div>
+    </div>
+
+    <figure class="hero" id="heroSubmission">
+      <img src="hero-shot.jpg" alt="Proposed pavilion at 32 Sutherland Avenue, Ascot"
+           style="height:auto;"
+           onload="this.closest('.hero').classList.add('show')">
+    </figure>
+
+    <div class="centerhead">
+    <h1 class="rv addr" id="proposalAddress">32 Sutherland Avenue,<br>Ascot.</h1>
+    <p class="lead rv">Dear <span id="proposalRecipients">Sam and Alex</span>,</p>
+    <p class="lead rv">Thank you for the opportunity to provide our preliminary cost proposal for the project at
+    <strong id="proposalFullAddress">32 Sutherland Avenue, Ascot QLD 4007.</strong></p>
+    <p class="lead rv">This proposal prices the works as drawn and specified in the documents supplied:</p>
+    <ul class="docs rv">
+      <li>Architectural Drawing Set</li>
+      <li>Interior Drawing Set</li>
+    </ul>
+    </div>
+
+    <hr class="rule">
+    <div class="stats stats3" style="grid-template-columns:repeat(2,1fr);justify-items:center;text-align:center;">
+      <div class="stat rv"><div class="n" id="proposalCost">$15.6M</div><div class="d" style="text-transform:none;">Indicative Cost including Landscaping &amp; GST</div></div>
+      <div class="stat rv"><div class="n" id="proposalDuration">20–22</div><div class="d">working months, start to finish</div></div>
+    </div>
+
+    <nav class="pagenav" aria-label="Pages">
+      <button class="pn-btn pn-back pn-ghost" tabindex="-1" aria-hidden="true">← Back</button>
+      <div class="pn-ind"><b>01</b> / 9</div>
+      <div class="pn-right">
+        <span class="pn-cue" aria-hidden="true">Click here<span class="arr">→</span></span>
+        <button class="pn-btn pn-next" onclick="showPage(2)">Opinion of Probable Cost →</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 · THE COST PLAN ============ -->
+<div class="page" data-page="2" data-section="cost">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="bl">
+        <img class="wlogo" src="w-template.png" alt="W. Template">
+      </div>
+    </div>
+    <h2 class="rv">Opinion of Probable Cost</h2>
+
+    <div class="opc-scroll rv">
+    <table class="opc">
+    <thead>
+      <tr><th id="costPlanBrand">W. TEMPLATE</th><th class="r">Measurement</th><th class="r">Rate</th><th class="r cp">Cost Plan</th></tr>
+    </thead>
+    <tbody>
+      <tr class="sec"><td>Floorplate</td><td class="r"></td><td class="r"></td><td class="r cp"></td></tr>
+      <tr><td>Ground Level Extension</td><td class="r">250 m&sup2;</td><td class="r">$12,000 /m&sup2;</td><td class="r cp">$3,000,000</td></tr>
+      <tr><td>Garage</td><td class="r">265 m&sup2;</td><td class="r">$8,000 /m&sup2;</td><td class="r cp">$2,120,000</td></tr>
+      <tr><td>Bed 01 Ensuite &amp; WIR Lightweight Extension</td><td class="r">45 m&sup2;</td><td class="r">$12,000 /m&sup2;</td><td class="r cp">$540,000</td></tr>
+      <tr><td>Level 01 Extension</td><td class="r">300 m&sup2;</td><td class="r">$15,000 /m&sup2;</td><td class="r cp">$4,500,000</td></tr>
+      <tr><td>Existing House Minor Refurb</td><td class="r">Allowance</td><td class="r"></td><td class="r cp">$500,000</td></tr>
+      <tr class="tot"><td>Floorplate</td><td class="r"></td><td class="r"></td><td class="r cp">$10,660,000</td></tr>
+      <tr class="sec"><td>External Works</td><td class="r"></td><td class="r"></td><td class="r cp"></td></tr>
+      <tr><td>Uncovered Terrace</td><td class="r">480 m&sup2;</td><td class="r">$5,000 /m&sup2;</td><td class="r cp">$2,400,000</td></tr>
+      <tr><td>Covered Terrace</td><td class="r">180 m&sup2;</td><td class="r">$8,000 /m&sup2;</td><td class="r cp">$1,440,000</td></tr>
+      <tr><td>Pool + Spa</td><td class="r">Allowance</td><td class="r"></td><td class="r cp">$400,000</td></tr>
+      <tr><td>Driveway + Surrounds</td><td class="r">Allowance</td><td class="r"></td><td class="r cp">$200,000</td></tr>
+      <tr><td>Soft Landscaping</td><td class="r">Allowance</td><td class="r"></td><td class="r cp">$500,000</td></tr>
+      <tr class="tot"><td>External Works</td><td class="r"></td><td class="r"></td><td class="r cp">$4,940,000</td></tr>
+      <tr class="tot grand"><td>Indicative Total inc GST + Landscaping</td><td class="r"></td><td class="r"></td><td class="r cp">$15,600,000</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <div class="exclusions rv">
+      <div class="exhead">Construction Duration</div>
+      <p class="exline">We anticipate a 20–22 month construction program, start to finish.</p>
+    </div>
+
+    <div class="exclusions rv">
+      <div class="exhead">Exclusions</div>
+      <div class="exlist">
+        <div class="exrow"><div class="num">01</div><p>All consultant fees associated with the project.</p></div>
+        <div class="exrow"><div class="num">02</div><p>Bonds for trees and vegetation.</p></div>
+        <div class="exrow"><div class="num">03</div><p>Authority fees such as council bonds / asset protection / tree protection etc.</p></div>
+        <div class="exrow"><div class="num">04</div><p>Authority fees / service upgrades / CT metering / utility costs.</p></div>
+        <div class="exrow"><div class="num">05</div><p>All connection fees (phone, gas, electrical and water).</p></div>
+        <div class="exrow"><div class="num">06</div><p>Any works outside of the title boundary, including upgrading sewer, gas, power, water, or associated works (inclusive of trenching etc).</p></div>
+        <div class="exrow"><div class="num">07</div><p>Working with or the removal of contaminated material or other latent in-ground conditions.</p></div>
+      </div>
+    </div>
+
+    <div class="exclusions rv" id="supdocs" hidden>
+      <div class="exhead">Supporting Documents</div>
+      <div class="igrid" id="supgrid" style="margin-top:12px;"></div>
+    </div>
+
+    <nav class="pagenav" aria-label="Pages">
+      <button class="pn-btn pn-back" onclick="showPage(1)">← The Submission</button>
+      <div class="pn-ind"><b>02</b> / 9</div>
+      <div class="pn-right">
+        <span class="pn-cue" aria-hidden="true">Click here<span class="arr">→</span></span>
+        <button class="pn-btn pn-next" onclick="showPage(3)">Case Studies →</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ PAGE 3 · CASE STUDIES ============ -->
+<div class="page" data-page="3" data-section="case-studies">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="bl">
+        <img class="wlogo" src="w-template.png" alt="W. Template">
+      </div>
+    </div>
+    <h2 class="rv">Case Studies.</h2>
+
+    <div id="caseStudyProjects"></div>
+
+    <nav class="pagenav" aria-label="Pages">
+      <button class="pn-btn pn-back" onclick="showPage(2)">← The Cost Plan</button>
+      <div class="pn-ind"><b>03</b> / 9</div>
+      <div class="pn-right">
+        <span class="pn-cue" aria-hidden="true">Click here<span class="arr">→</span></span>
+        <button class="pn-btn pn-next" onclick="showPage(4)">Detailed Proposal Example →</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ PAGE 4 · DETAILED PROPOSAL EXAMPLE ============ -->
+<div class="page" data-page="6" data-section="detailed-proposal">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="bl">
+        <img class="wlogo" src="w-template.png" alt="W. Template">
+      </div>
+    </div>
+    <h2 class="rv">Detailed Proposal Example.</h2>
+    <p class="lead rv">A detailed proposal including cost plan breakdown, construction program, 3D construction methodology, BOQ, markup drawings and key subcontractor list can be submitted within three weeks when we progress to the next stage.</p>
+
+    <div class="proj rv">
+      <div class="proj-head"><h3>3D Program and Methodology.</h3><div class="pd">The build, sequenced in 3D</div></div>
+      <div class="igrid docgrid" data-docs="method"></div>
+      <p class="docfallback exline" hidden>Provided with our detailed pricing submission.</p>
+    </div>
+
+    <div class="proj rv">
+      <div class="proj-head"><h3>Measurements and Bill of Quantities.</h3><div class="pd">Measured &amp; marked up</div></div>
+      <div class="igrid docgrid" data-docs="boq"></div>
+      <p class="docfallback exline" hidden>Provided with our detailed pricing submission.</p>
+    </div>
+
+    <div class="proj rv">
+      <div class="proj-head"><h3>Trade Recommendation.</h3><div class="pd">How we procure each package</div></div>
+      <div class="igrid docgrid" data-docs="trade"></div>
+      <p class="docfallback exline" hidden>Provided with our detailed pricing submission.</p>
+    </div>
+
+    <nav class="pagenav" aria-label="Pages">
+      <button class="pn-btn pn-back" onclick="showPage(3)">← Case Studies</button>
+      <div class="pn-ind"><b>04</b> / 9</div>
+      <div class="pn-right">
+        <span class="pn-cue" aria-hidden="true">Click here<span class="arr">→</span></span>
+        <button class="pn-btn pn-next" onclick="showPage(5)">The Technology Stack →</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ PAGE 5 · THE TECHNOLOGY STACK ============ -->
+<div class="page" data-page="4" data-section="technology">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="bl">
+        <img class="wlogo" src="w-template.png" alt="W. Template">
+      </div>
+    </div>
+    <h2 class="rv">The Technology Stack.</h2>
+    <div class="proj rv" style="margin-top:34px;">
+      <div class="proj-head">
+        <h3>W.App</h3>
+        <div class="pd">One App · Every Detail · In Your Pocket</div>
+      </div>
+      <p class="proj-copy">Everything on a W. project runs through W.App: workflows and approvals, documents, live site cameras, the 3D model, project intelligence and every conversation with your W. team, in your pocket, every day.</p>
+      <div class="duo">
+        <img src="app-stack-1.png" alt="W.App: workflows, quick links and home screen" loading="lazy">
+        <img src="app-stack-2.png" alt="W.App: site cameras, 3D model and project intelligence" loading="lazy">
+      </div>
+    </div>
+
+    <p class="lead rv" style="margin-top:44px;">Starlink-connected site cameras give our clients full 24/7 transparency, with no blind spots, beside a private social feed exclusive to the client and the project management team. Every W. site runs the same stack:</p>
+
+    <div class="igrid rv" style="margin-top:26px;">
+      <div class="igcard static"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg><span class="t">W.App</span><span class="s">Private W.App with an exclusive feed of progress, granting clients instant updates from anywhere in the world.</span></div>
+      <div class="igcard static"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg><span class="t">W.OS</span><span class="s">Our custom-built internal Operating System. Meticulously optimised to keep all W.Staff in sync, whether in-office, on-site, or interstate.</span></div>
+      <div class="igcard static"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.2a11 11 0 0 1 15 0"/><path d="M7.8 15.4a6.5 6.5 0 0 1 8.4 0"/><circle cx="12" cy="18.6" r="1.2" fill="currentColor" stroke="none"/></svg><span class="t">Starlink connectivity</span><span class="s">Live site data from day one, even fully off-grid.</span></div>
+      <div class="igcard static"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="13" height="10" rx="2.5"/><path d="m15.5 10.5 6-2.5v8l-6-2.5"/></svg><span class="t">Site cameras · 24/7</span><span class="s">Full transparency with no blind spots, streaming to your device.</span></div>
+      <div class="igcard static"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2.7 8.1 4.7v9.2L12 21.3l-8.1-4.7V7.4z"/><path d="m3.9 7.4 8.1 4.7 8.1-4.7"/><path d="M12 12.1v9.2"/></svg><span class="t">Matterport scans</span><span class="s">The whole home captured in interactive 3D at key stages of the build.</span></div>
+      <div class="igcard static"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.8" width="18" height="16.2" rx="2.5"/><path d="M3 9.6h18"/><path d="M8 2.6v4M16 2.6v4"/><path d="m9.3 14.6 1.9 1.9 3.5-3.5"/></svg><span class="t">Live program</span><span class="s">Programmed to the day, visible to the client throughout.</span></div>
+      <div class="igcard static"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="12" height="12" rx="2.5"/><rect x="8.5" y="8.5" width="12" height="12" rx="2.5"/></svg><span class="t">Clash detection</span><span class="s">Using Revit &amp; AI to surface clashes before they become issues on site.</span></div>
+      <div class="igcard static"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="4" width="15" height="17.5" rx="2.5"/><path d="M9 2.5h6v3H9z"/><path d="m8.8 13.5 2.2 2.2 4.2-4.2"/></svg><span class="t">Safety &amp; Compliance</span><span class="s">Digital site management: inductions, compliance and records in one place.</span></div>
+      <div class="igcard static"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9a2 2 0 0 1 2-2h2.1l1.5-2.2h6.8L16.9 7H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13.4" r="3.6"/></svg><span class="t">Computer Vision Defect Detection</span><span class="s">Programmed photographic capture of every element, reviewed with AI and computer vision; defect inspections documented and closed out stage by stage.</span></div>
+    </div>
+
+    <div class="proj rv">
+      <div class="proj-head">
+        <h3>Walk through a W. scan.</h3>
+        <div class="pd">Matterport · Interactive</div>
+      </div>
+      <p class="proj-copy">Below is an interactive 3D scan of a W. Project under construction. These scans are completed at key stages of the build and shared with everyone involved for transparency.</p>
+      <div class="mp-embed">
+        <iframe id="mpFrame" data-src="https://my.matterport.com/show/?m=AEFavnvHZ2W" title="Matterport 3D walkthrough"
+                frameborder="0" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <nav class="pagenav" aria-label="Pages">
+      <button class="pn-btn pn-back" onclick="showPage(4)">← Detailed Proposal Example</button>
+      <div class="pn-ind"><b>05</b> / 9</div>
+      <div class="pn-right">
+        <span class="pn-cue" aria-hidden="true">Click here<span class="arr">→</span></span>
+        <button class="pn-btn pn-next" onclick="showPage(6)">The Project Team →</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<!-- ============ PAGE 7 · THE W. PORTFOLIO ============ -->
+<div class="page" data-page="5" data-section="portfolio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="bl">
+        <img class="wlogo" src="w-template.png" alt="W. Template">
+      </div>
+    </div>
+    <h2 class="rv">The W. Portfolio.</h2>
+
+    <h2 class="rv accent" id="portfolioCompletedHeading" style="margin-top:40px;">Completed Works.</h2>
+
+    <div class="proj rv" data-project="south-yarra">
+      <div class="proj-head">
+        <h3>W.SOUTH YARRA</h3>
+      </div>
+      <p class="proj-copy">A basement and three-storey restoration and extension to a grand heritage mansion, with an off-form concrete and stone-clad extension, including an 11-car basement. Complex sequencing, including tunnelling under the existing house.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="domain-1.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+          <img src="domain-2.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+          <img src="domain-3.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+          <img src="domain-4.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+          <img src="domain-5.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+          <img src="domain-6.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+          <img src="domain-7.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+          <img src="domain-8.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+          <img src="domain-9.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+          <img src="domain-10.jpg" alt="W.SOUTH YARRA residence" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="hopetoun">
+      <div class="proj-head">
+        <h3>W.HOPETOUN</h3>
+      </div>
+      <p class="proj-copy">A four-level, cantilevered off-form concrete residence overlooking the city, delivered early.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="pf-hopetoun-1.jpg" alt="W.HOPETOUN residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-hopetoun-2.jpg" alt="W.HOPETOUN residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-hopetoun-3.jpg" alt="W.HOPETOUN residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-hopetoun-4.jpg" alt="W.HOPETOUN residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-hopetoun-5.jpg" alt="W.HOPETOUN residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-hopetoun-6.jpg" alt="W.HOPETOUN residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-hopetoun-7.jpg" alt="W.HOPETOUN residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-hopetoun-8.jpg" alt="W.HOPETOUN residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-hopetoun-9.jpg" alt="W.HOPETOUN residence" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="mermaid">
+      <div class="proj-head">
+        <h3>W.MERMAID</h3>
+      </div>
+      <p class="proj-copy">A stunning north facing waterfront home on the Gold Coast, completed two months ahead of schedule with a subcontractor base we assembled from scratch in another state. New market; the result didn't change.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="mermaid-1.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-2.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-3.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-4.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-5.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-6.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-7.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-8.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-9.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-10.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-11.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-12.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-13.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-14.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+          <img src="mermaid-15.jpg" alt="W.MERMAID residence" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="lambeth">
+      <div class="proj-head">
+        <h3>W.LAMBETH</h3>
+      </div>
+      <p class="proj-copy">A three storey extension with a basement to a restored period home, complemented by a contemporary off-form concrete and stone-clad addition.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="pf-lambeth-1.jpg" alt="W.LAMBETH residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-lambeth-2.jpg" alt="W.LAMBETH residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-lambeth-3.jpg" alt="W.LAMBETH residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-lambeth-4.jpg" alt="W.LAMBETH residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-lambeth-5.jpg" alt="W.LAMBETH residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-lambeth-6.jpg" alt="W.LAMBETH residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-lambeth-7.jpg" alt="W.LAMBETH residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-lambeth-8.jpg" alt="W.LAMBETH residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-lambeth-9.jpg" alt="W.LAMBETH residence" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="alpine">
+      <div class="proj-head">
+        <h3>W.ALPINE</h3>
+      </div>
+      <p class="proj-copy">A fully self-sufficient off-grid home in the Victorian Alps, with independent power, rainwater harvesting and septic systems, delivered in an environmentally sensitive, highest-rated bushfire zone.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="howqua-1.jpg" alt="W.ALPINE residence" loading="lazy" onerror="this.remove()">
+          <img src="howqua-2.jpg" alt="W.ALPINE residence" loading="lazy" onerror="this.remove()">
+          <img src="howqua-3.jpg" alt="W.ALPINE residence" loading="lazy" onerror="this.remove()">
+          <img src="howqua-4.jpg" alt="W.ALPINE residence" loading="lazy" onerror="this.remove()">
+          <img src="howqua-5.jpg" alt="W.ALPINE residence" loading="lazy" onerror="this.remove()">
+          <img src="howqua-6.jpg" alt="W.ALPINE residence" loading="lazy" onerror="this.remove()">
+          <img src="howqua-7.jpg" alt="W.ALPINE residence" loading="lazy" onerror="this.remove()">
+          <img src="howqua-8.jpg" alt="W.ALPINE residence" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="canterbury">
+      <div class="proj-head">
+        <h3>W.CANTERBURY</h3>
+      </div>
+      <p class="proj-copy">A sophisticated Victorian terrace renovation, built while we delivered the same client's dream home in Queensland. Only possible with W.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="pf-w-canterbury-1.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-canterbury-2.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-canterbury-3.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-canterbury-4.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-canterbury-5.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-canterbury-6.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-canterbury-7.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-canterbury-8.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-canterbury-9.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-canterbury-10.jpg" alt="W.CANTERBURY residence" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="terralsole">
+      <div class="proj-head">
+        <h3>W.TERRALSOLE</h3>
+      </div>
+      <p class="proj-copy">A timeless Mediterranean-inspired coastal residence in Sorrento, seamlessly blending traditional craftsmanship with modern luxury in partnership with B.E Architecture.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="terralsole-1.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-2.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-3.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-4.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-5.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-6.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-7.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-8.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-9.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-10.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-11.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-12.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-13.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-14.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-15.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+          <img src="terralsole-16.webp" alt="W.TERRALSOLE residence" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="euroma">
+      <div class="proj-head">
+        <h3>W.EUROMA</h3>
+      </div>
+      <p class="proj-copy">A masterful restoration and extension of a Victorian-era Hawthorn brick villa, its original character thoughtfully preserved, with modern living layered through every room.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="pf-euroma-1.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-euroma-2.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-euroma-3.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-euroma-4.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-euroma-5.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-euroma-6.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-euroma-7.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-euroma-8.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-euroma-9.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-euroma-10.jpg" alt="W.EUROMA residence" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <h2 class="rv accent" id="portfolioConstructionHeading" style="margin-top:56px;">Under Construction.</h2>
+
+    <div class="proj rv" data-project="aqua">
+      <div class="proj-head">
+        <h3>W.AQUA</h3>
+      </div>
+      <p class="proj-copy">A breath-taking three-level residence with basement, showcasing expansive off-form concrete walls, soaring five-metre sliding windows and three luxurious pools.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="pf-aqua-1.jpg" alt="W.AQUA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-aqua-2.jpg" alt="W.AQUA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-aqua-3.jpg" alt="W.AQUA site progress" loading="lazy" onerror="this.remove()">
+          <img src="pf-aqua-4.jpg" alt="W.AQUA basement pour" loading="lazy" onerror="this.remove()">
+          <img src="pf-aqua-5.jpg" alt="W.AQUA residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-aqua-6.jpg" alt="W.AQUA steel delivery" loading="lazy" onerror="this.remove()">
+          <img src="pf-aqua-7.jpg" alt="W.AQUA structural steel" loading="lazy" onerror="this.remove()">
+          <img src="pf-aqua-8.jpg" alt="W.AQUA site progress" loading="lazy" onerror="this.remove()">
+          <img src="pf-aqua-9.jpg" alt="W.AQUA crane lift" loading="lazy" onerror="this.remove()">
+          <img src="pf-aqua-10.jpg" alt="W.AQUA off-form concrete walls" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="hedges">
+      <div class="proj-head">
+        <h3>W.HEDGES</h3>
+      </div>
+      <p class="proj-copy">A striking three-level structure with a double-storey basement on Mermaid Beach, with expansive off-form concrete walls and sleek metal façades.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="pf-w-hedges-1.jpg" alt="W.HEDGES residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hedges-2.jpg" alt="W.HEDGES residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hedges-3.jpg" alt="W.HEDGES residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hedges-4.jpg" alt="W.HEDGES residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hedges-5.jpg" alt="W.HEDGES residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hedges-6.jpg" alt="W.HEDGES residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hedges-7.jpg" alt="W.HEDGES residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hedges-8.jpg" alt="W.HEDGES beachfront excavation" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hedges-9.jpg" alt="W.HEDGES basement excavation" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hedges-10.jpg" alt="W.HEDGES site progress" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="hambleton">
+      <div class="proj-head">
+        <h3>W.HAMBLETON</h3>
+      </div>
+      <p class="proj-copy">An exquisite restoration and contemporary evolution of a heritage residence: refined Victorian craftsmanship, sophisticated modern additions and a luxurious new basement level.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="pf-w-hambleton-1.jpg" alt="W.HAMBLETON residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hambleton-2.jpg" alt="W.HAMBLETON residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hambleton-3.jpg" alt="W.HAMBLETON residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hambleton-4.jpg" alt="W.HAMBLETON residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hambleton-5.jpg" alt="W.HAMBLETON residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hambleton-6.jpg" alt="W.HAMBLETON residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hambleton-7.jpg" alt="W.HAMBLETON basement excavation" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hambleton-8.jpg" alt="W.HAMBLETON basement structure" loading="lazy" onerror="this.remove()">
+          <img src="pf-w-hambleton-9.jpg" alt="W.HAMBLETON site progress" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="esplanade">
+      <div class="proj-head">
+        <h3>W.ESPLANADE</h3>
+      </div>
+      <p class="proj-copy">A distinctive new build on Brighton's Esplanade, defined by sweeping sculptural forms and bold, panoramic double-height glazing that commands the beachfront.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="pf-esplanade-1.jpg" alt="W.ESPLANADE residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-esplanade-2.jpg" alt="W.ESPLANADE residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-esplanade-3.jpg" alt="W.ESPLANADE residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-esplanade-4.jpg" alt="W.ESPLANADE site progress" loading="lazy" onerror="this.remove()">
+          <img src="pf-esplanade-5.jpg" alt="W.ESPLANADE slab pour" loading="lazy" onerror="this.remove()">
+          <img src="pf-esplanade-6.jpg" alt="W.ESPLANADE aerial" loading="lazy" onerror="this.remove()">
+          <img src="pf-esplanade-7.jpg" alt="W.ESPLANADE circular formwork" loading="lazy" onerror="this.remove()">
+          <img src="pf-esplanade-8.jpg" alt="W.ESPLANADE slab pour" loading="lazy" onerror="this.remove()">
+          <img src="pf-esplanade-9.jpg" alt="W.ESPLANADE structure" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <div class="proj rv" data-project="marine-parade">
+      <div class="proj-head">
+        <h3>W.MARINE PARADE</h3>
+      </div>
+      <p class="proj-copy">Our first Western Australian chapter: a new home for Swanbourne on Perth's coast, with details to come.</p>
+      <div class="dr-car">
+        <div class="dr-track">
+          <img src="pf-perth-1.jpg" alt="W.MARINE PARADE residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-perth-2.jpg" alt="W.MARINE PARADE residence" loading="lazy" onerror="this.remove()">
+          <img src="pf-perth-3.jpg" alt="W.MARINE PARADE residence" loading="lazy" onerror="this.remove()">
+        </div>
+        <button class="dr-nav prev" aria-label="Previous photo">←</button>
+        <button class="dr-nav next" aria-label="Next photo">→</button>
+      </div>
+    </div>
+
+    <nav class="pagenav" id="portfolioNav" aria-label="Pages">
+      <button class="pn-btn pn-back" onclick="showPage(6)">← The Project Team</button>
+      <div class="pn-ind"><b>07</b> / 9</div>
+      <div class="pn-right">
+        <span class="pn-cue" aria-hidden="true">Click here<span class="arr">→</span></span>
+        <button class="pn-btn pn-next" onclick="showPage(8)">Business Details →</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ PAGE 8 · BUSINESS DETAILS ============ -->
+<div class="page" data-page="9" data-section="business">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="bl">
+        <img class="wlogo" src="w-template.png" alt="W. Template">
+      </div>
+    </div>
+    <h2 class="rv">Business Details.</h2>
+
+    <div class="proj-head rv" style="margin-top:24px;max-width:620px;">
+      <h3 id="businessStateName">Queensland</h3>
+      <div class="pd" id="businessStateCode">QLD · state-specific</div>
+    </div>
+
+    <div class="trades rv" id="businessDetails" style="columns:1;max-width:620px;"></div>
+
+    <div class="exclusions rv">
+      <div class="exhead">Insurance and eligibility documents</div>
+      <div class="igrid" id="businessDocuments" style="margin-top:12px;"></div>
+    </div>
+
+    <h2 class="rv" style="margin-top:52px;">References.</h2>
+
+    <div class="igrid rv" style="margin-top:26px;">
+      <div class="igcard static">
+        <img class="refimg" src="mermaid-1.jpg" alt="W.Mermaid residence" loading="lazy">
+        <span class="t">Ed Crowley | Client</span>
+        <span class="rl">Project: Mermaid Waters (Gold Coast)<br>
+          <a href="tel:0401830667">0401 830 667</a></span>
+      </div>
+      <div class="igcard static">
+        <img class="refimg" src="alvin-s-reference.png" alt="South Yarra residence" loading="lazy">
+        <span class="t">Alvin S | Client</span>
+        <span class="rl">Project: South Yarra<br>
+          <a href="tel:0421033870">0421 033 870</a></span>
+      </div>
+      <div class="igcard static">
+        <img class="refimg" src="shaun-lockyer-reference.png" alt="Hedges residence" loading="lazy">
+        <span class="t">Shaun Lockyer | Architect</span>
+        <span class="rl">Project: Hedges<br>
+          <a href="tel:0409541462">0409 541 462</a></span>
+      </div>
+    </div>
+
+    <nav class="pagenav" aria-label="Pages">
+      <button class="pn-btn pn-back" onclick="showPage(7)">← The W. Portfolio</button>
+      <div class="pn-ind"><b>08</b> / 9</div>
+      <div class="pn-right">
+        <span class="pn-cue" aria-hidden="true">Click here<span class="arr">→</span></span>
+        <button class="pn-btn pn-next" onclick="showPage(9)">Let's Meet →</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ PAGE 6 · THE PROJECT TEAM ============ -->
+<div class="page" data-page="7" data-section="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="bl">
+        <img class="wlogo" src="w-template.png" alt="W. Template">
+      </div>
+    </div>
+    <h2 class="rv">The Project Team.</h2>
+    <p class="lead rv">A full-time, dedicated project team, provided from start to finish.</p>
+
+    <div class="igrid rv" style="margin-top:26px;">
+      <div class="igcard static">
+        <span class="t">Site Manager</span>
+        <span class="open">On site every day</span>
+        <span class="s"><strong>Owns delivery on the ground</strong></span>
+        <ul class="clist">
+          <li>Shop drawing review</li>
+          <li>Waterproofing details</li>
+          <li>Safety</li>
+          <li>Setouts</li>
+          <li>Quality management</li>
+          <li>Trade bookings</li>
+          <li>Drawing execution</li>
+        </ul>
+      </div>
+      <div class="igcard static">
+        <span class="t">Project Manager</span>
+        <span class="open">Based in HQ, on site weekly</span>
+        <span class="s"><strong>Owns the head contract and the time position</strong></span>
+        <ul class="clist">
+          <li>Contract program</li>
+          <li>Head contract</li>
+          <li>Design resolution</li>
+          <li>Critical details</li>
+          <li>Client communications</li>
+          <li>Meeting agenda</li>
+          <li>Project operating system</li>
+          <li>Client experience</li>
+        </ul>
+      </div>
+      <div class="igcard static">
+        <span class="t">Contract Administrator</span>
+        <span class="open">Based in HQ, on site weekly</span>
+        <span class="s"><strong>Owns the numbers and the paperwork</strong></span>
+        <ul class="clist">
+          <li>Project budget</li>
+          <li>Trade procurement</li>
+          <li>Subcontract management</li>
+          <li>Insurances</li>
+          <li>Variations</li>
+          <li>Document control</li>
+          <li>RFIs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exlist rv">
+      <div class="exrow"><div class="num">01</div><p>Every member of the team carries experience in $10M+ single-dwelling construction.</p></div>
+      <div class="exrow"><div class="num">02</div><p>The resources will be allocated to the project and details will be provided for each position once timeline and preferred status are realised.</p></div>
+      <div class="exrow"><div class="num">03</div><p>A list of key subcontractors will also be provided alongside cost plan proposal, construction program and 3D construction methodology within three weeks when we progress to the next stage.</p></div>
+    </div>
+
+    <nav class="pagenav" aria-label="Pages">
+      <button class="pn-btn pn-back" onclick="showPage(5)">← The Technology Stack</button>
+      <div class="pn-ind"><b>06</b> / 9</div>
+      <div class="pn-right">
+        <span class="pn-cue" aria-hidden="true">Click here<span class="arr">→</span></span>
+        <button class="pn-btn pn-next" onclick="showPage(7)">The W. Portfolio →</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ PAGE 8 · OUR PROCESS ============ -->
+<div class="page" data-page="8" data-section="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="bl">
+        <img class="wlogo" src="w-template.png" alt="W. Template">
+      </div>
+    </div>
+    <h2 class="rv">One Promise. True Alignment.</h2>
+
+    <section class="promise rv" aria-label="One promise, true alignment">
+      <p class="p-sub">Our interests and our client's interests are aligned across every dimension of the project.</p>
+      <div class="p-item">
+        <h4>Together We Reclaim Time.</h4>
+        <p>Every build is programmed to the day against a live schedule our clients can see. Our fee is fixed. We have no incentive to extend and every reason to deliver early.</p>
+      </div>
+      <div class="p-item">
+        <h4>Together We Protect Cost.</h4>
+        <p>Every cost is competitively tendered, benchmarked against market, and filtered through a trained financial model fine-tuned on a decade of commercial data. Our fee is fixed against a defined scope. Every dollar saved on trades protects the client's cost and our margin.</p>
+      </div>
+      <div class="p-item">
+        <h4>Together We Perfect Quality.</h4>
+        <p>Defect-free at handover. No leaks. No unfinished work. Every stage inspected and documented against a quality system defined by national exposure and supported by the most cutting edge construction technology stack available. Our reputation is our pipeline.</p>
+      </div>
+      <div class="p-item">
+        <h4>Together We Elevate the Experience.</h4>
+        <p>Live site cameras streaming to your device, a private daily feed of progress and milestones, one dedicated app for all communication, documents, data, and your W. team. A build with no blind spots is a build with fewer queries to answer. Transparency serves both sides.</p>
+      </div>
+      <div class="p-final">Four Guarantees. One Promise. True Alignment.</div>
+    </section>
+
+    <nav class="pagenav" aria-label="Pages">
+      <button class="pn-btn pn-back" onclick="showPage(7)">← The Project Team</button>
+      <div class="pn-ind"><b>08</b> / 10</div>
+      <div class="pn-right">
+        <span class="pn-cue" aria-hidden="true">Click here<span class="arr">→</span></span>
+        <button class="pn-btn pn-next" onclick="showPage(9)">Business Details →</button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ PAGE 10 · THE CLOSE ============ -->
+<div class="page" data-page="10" data-section="closing">
+  <section class="finale">
+    <div class="dr-car rv">
+      <div class="dr-track">
+        <img src="team-0.jpg" alt="The W. team" loading="lazy" onerror="this.remove()">
+        <img src="team-2.jpg" alt="The W. team" loading="lazy" onerror="this.remove()">
+        <img src="team-3.jpg" alt="The W. team" loading="lazy" onerror="this.remove()">
+        <img src="team-4.jpg" alt="The W. team" loading="lazy" onerror="this.remove()">
+        <img src="team-1.jpg" alt="The W. team" loading="lazy" onerror="this.remove()">
+      </div>
+      <button class="dr-nav prev" aria-label="Previous photo">←</button>
+      <button class="dr-nav next" aria-label="Next photo">→</button>
+    </div>
+    <h2 class="fin-q rv" style="max-width:880px;">We would love to meet in person to discuss our portfolio, people and processes that we believe are a great fit for this significant project.</h2>
+    <div class="fin-contact rv">
+      <div class="name">Scotty</div>
+      <div class="role">Builder</div>
+    </div>
+    <div class="fin-cta rv">
+      <a class="gold" href="tel:+61413688220">0413 688 220</a>
+      <a class="ghost" href="mailto:scott@w.build">scott@w.build</a>
+    </div>
+    <div class="fin-foot rv">
+      <div class="wbuild">
+        <img src="w-template.png" alt="W. Template">
+      </div>
+      <div class="fin-tagline">Australia's legacy private residential builder</div>
+    </div>
+    <div class="fin-social rv">
+      <a href="https://w.build" target="_blank" rel="noopener" aria-label="W.BUILD website" title="W.BUILD">
+        <img src="w-mark-gold.png" alt="W.BUILD">
+      </a>
+      <a href="https://www.instagram.com/w.buildau" target="_blank" rel="noopener" aria-label="W.BUILD on Instagram" title="@W.BUILDAU">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/>
+          <circle cx="12" cy="12" r="4.4"/>
+          <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+    <button class="fin-back" onclick="showPage(8)">← back to business details</button>
+  </section>
+</div>
+</main>
+
+<!-- ============ POPUP (instagram / pdf) ============ -->
+<div id="igModal" role="dialog" aria-modal="true" aria-label="Instagram post">
+  <div class="ig-box">
+    <button class="ig-close" onclick="closeIG()" aria-label="Close">×</button>
+    <a id="igDl" class="ig-dl" href="#" download>Download PDF</a>
+    <iframe id="igFrame" title="Instagram post" allow="encrypted-media" loading="lazy"></iframe>
+    <div id="sheetPreview" class="sheet-preview" hidden></div>
+  </div>
+</div>
+
+<script src="data/template-config.js"></script>
+<script src="data/portfolio-index.js"></script>
+<script src="data/document-index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

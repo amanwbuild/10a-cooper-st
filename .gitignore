@@ -1,0 +1,6 @@
+.context/
+.netlify/
+.wrangler/
+node_modules/
+.DS_Store
+
