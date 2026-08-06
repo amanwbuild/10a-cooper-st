@@ -21,7 +21,13 @@ window.W_TEMPLATE_CONFIG = Object.freeze({
     duration: "20–22"
   },
   caseStudies: ["canterbury", "terralsole", "mermaid"],
-  supportingDocuments: [],
+  supportingDocuments: [
+    {
+      name: "2026-08-06 · Cost Plan Markup v1",
+      file: "assets/documents/cost/2026-08-06_Cost-Plan-Markup_v1.pdf",
+      type: "pdf"
+    }
+  ],
   pages: [
     { id: "submission", title: "The Submission" },
     { id: "cost", title: "Opinion of Probable Cost" },

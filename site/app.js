@@ -69,14 +69,20 @@
   const SUPPORTING = TEMPLATE.supportingDocuments || [];
   if (SUPPORTING.length){
     document.getElementById('supdocs').hidden = false;
-    document.getElementById('supgrid').innerHTML = SUPPORTING.map((document, index) =>
-      '<button class="igcard" type="button" data-support="' + index + '">' + docSVG +
+    document.getElementById('supgrid').innerHTML = SUPPORTING.map((document, index) => {
+      const isPDF = document.type === 'pdf' || /\.pdf$/i.test(document.file);
+      return '<button class="igcard" type="button" data-support="' + index + '">' + docSVG +
       '<span class="t">' + document.name + '</span>' +
-      '<span class="u">XLSX · preview or download</span>' +
-      '<span class="open">Preview workbook ↗</span></button>').join('');
+      '<span class="u">' + (isPDF ? 'PDF · view or download' : 'XLSX · preview or download') + '</span>' +
+      '<span class="open">' + (isPDF ? 'Open document ↗' : 'Preview workbook ↗') + '</span></button>';
+    }).join('');
     document.querySelectorAll('[data-support]').forEach(button => {
       const document = SUPPORTING[Number(button.dataset.support)];
-      button.addEventListener('click', () => openCostPlan(document.file, document.name));
+      const isPDF = document.type === 'pdf' || /\.pdf$/i.test(document.file);
+      button.addEventListener('click', () => {
+        if (isPDF) openDoc(document.file);
+        else openCostPlan(document.file, document.name);
+      });
     });
   }
 

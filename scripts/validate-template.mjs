@@ -58,7 +58,9 @@ check(html.includes('<h2 class="rv">One Promise. True Alignment.</h2>'), 'Our Pr
 check((html.match(/class="p-item"/g) || []).length === 4, 'Our Process must contain the four Mt Rose guarantees.');
 check(!/project at<br>\s*<strong id="proposalFullAddress">/.test(html), 'The submission address must wrap naturally without a forced line break.');
 check(!html.includes("The homes we've delivered, and the live projects under construction today."), 'The removed portfolio subtitle must not be rendered.');
-check(config.supportingDocuments.length === 0, 'Supporting documents must be removed for this proposal.');
+check(config.supportingDocuments.length === 1, 'The cost-plan markup must be the only supporting document.');
+check(config.supportingDocuments[0]?.name === '2026-08-06 · Cost Plan Markup v1', 'The cost-plan markup display name is incorrect.');
+check(config.supportingDocuments[0]?.type === 'pdf', 'The cost-plan markup must be configured as a PDF.');
 for (const document of config.supportingDocuments) checkFile(document.file, 'Cost-page supporting document');
 
 const documentPaths = new Set();

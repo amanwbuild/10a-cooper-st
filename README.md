@@ -23,7 +23,7 @@ Edit [`site/data/template-config.js`](site/data/template-config.js). This is the
 - `supportingDocuments`: optional cost-plan workbooks shown on the Opinion of Probable Cost page.
 - `passcode`: currently fixed at `2481` as requested.
 
-The current proposal has no supporting cost-plan workbook configured. Add one only when a project-specific workbook should be available to the recipient.
+The current proposal includes the project-specific `2026-08-06 · Cost Plan Markup v1` PDF with in-page preview and download access.
 
 The page order is:
 
