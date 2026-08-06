@@ -30,7 +30,7 @@ function checkFile(relativePath, label){
   check(fs.existsSync(path.join(siteRoot, relativePath)), `${label}: missing ${relativePath}`);
 }
 
-check(config.passcode === '0000', 'Passcode must remain 0000.');
+check(config.passcode === '2481', 'Passcode must remain 2481 for this proposal.');
 checkFile(config.brand.logo, 'Brand logo');
 
 const expectedPages = [
@@ -48,12 +48,17 @@ portfolio.forEach((project, index) => {
 
 check(config.pages.find(page => page.id === 'cost')?.title === 'Opinion of Probable Cost', 'The cost-page title must be Opinion of Probable Cost.');
 check(config.pages.find(page => page.id === 'case-studies')?.title === 'Case Studies', 'The case-studies title must be Case Studies.');
-check(/<div id="caseStudyProjects"><\/div>/.test(html), 'Case Studies must remain empty.');
+check(/<div id="caseStudyProjects"><\/div>/.test(html), 'The Case Studies mount point is missing.');
+const expectedCaseStudies = ['canterbury', 'terralsole', 'mermaid'];
+check(JSON.stringify(config.caseStudies) === JSON.stringify(expectedCaseStudies), 'Case Studies must be Canterbury, Terralsole and Mermaid.');
+for (const projectId of config.caseStudies) {
+  check(portfolio.some(project => project.id === projectId), `Unknown case study project: ${projectId}`);
+}
 check(html.includes('<h2 class="rv">One Promise. True Alignment.</h2>'), 'Our Process must open with One Promise. True Alignment.');
 check((html.match(/class="p-item"/g) || []).length === 4, 'Our Process must contain the four Mt Rose guarantees.');
 check(!/project at<br>\s*<strong id="proposalFullAddress">/.test(html), 'The submission address must wrap naturally without a forced line break.');
 check(!html.includes("The homes we've delivered, and the live projects under construction today."), 'The removed portfolio subtitle must not be rendered.');
-check(config.supportingDocuments.length === 1, 'The original cost-plan supporting document must be configured.');
+check(config.supportingDocuments.length === 0, 'Supporting documents must be removed for this proposal.');
 for (const document of config.supportingDocuments) checkFile(document.file, 'Cost-page supporting document');
 
 const documentPaths = new Set();

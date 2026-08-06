@@ -6,26 +6,22 @@
  * when starting a proposal from the template.
  */
 window.W_TEMPLATE_CONFIG = Object.freeze({
-  passcode: "0000",
-  state: "QLD",
+  passcode: "2481",
+  state: "NSW",
   brand: {
-    name: "W. TEMPLATE",
-    logo: "w-template.png"
+    name: "W.FARNHAM",
+    logo: "w-farnham.png"
   },
   proposal: {
-    browserTitle: "W. TEMPLATE · Private Proposal",
-    addressHeading: "32 Sutherland Avenue,<br>Ascot.",
-    recipients: "Sam and Alex",
-    fullAddress: "32 Sutherland Avenue, Ascot QLD 4007.",
-    indicativeCost: "$15.6M",
+    browserTitle: "10A Cooper St, Byron Bay · Private Proposal",
+    addressHeading: "10A Cooper St,<br>Byron Bay.",
+    recipients: "Melissa & Rob",
+    fullAddress: "10A Cooper St, Byron Bay NSW 2481.",
+    indicativeCost: "A$5.48M",
     duration: "20–22"
   },
-  supportingDocuments: [
-    {
-      name: "W.Sutherland · Cost Plan",
-      file: "assets/documents/cost/W.Sutherland - Cost Plan.xlsx"
-    }
-  ],
+  caseStudies: ["canterbury", "terralsole", "mermaid"],
+  supportingDocuments: [],
   pages: [
     { id: "submission", title: "The Submission" },
     { id: "cost", title: "Opinion of Probable Cost" },

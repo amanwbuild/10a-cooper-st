@@ -25,7 +25,6 @@
   document.getElementById('proposalFullAddress').textContent = TEMPLATE.proposal.fullAddress;
   document.getElementById('proposalCost').textContent = TEMPLATE.proposal.indicativeCost;
   document.getElementById('proposalDuration').textContent = TEMPLATE.proposal.duration;
-  document.getElementById('costPlanBrand').textContent = TEMPLATE.brand.name;
 
   // ---- page order and navigation ----
   const pageRoot = document.querySelector('main');
@@ -95,6 +94,17 @@
     portfolioNav.before(card);
   });
 
+  // ---- proposal-specific case studies cloned from the portfolio library ----
+  const caseStudyRoot = document.getElementById('caseStudyProjects');
+  (TEMPLATE.caseStudies || []).forEach(projectId => {
+    const source = document.querySelector(`[data-project="${projectId}"]`);
+    if (!source) throw new Error(`Missing case study project: ${projectId}`);
+    const caseStudy = source.cloneNode(true);
+    caseStudy.removeAttribute('data-project');
+    caseStudy.dataset.caseStudy = projectId;
+    caseStudyRoot.appendChild(caseStudy);
+  });
+
   // ---- reusable proposal document library ----
   document.querySelectorAll('.docgrid').forEach(grid => {
     const files = DOCUMENTS.proposal[grid.dataset.docs] || [];
@@ -145,9 +155,12 @@
     businessCard.appendChild(row);
   });
   document.getElementById('businessDetails').appendChild(businessCard);
-  stateRecord.documents.forEach(indexedDocument => {
-    window.document.getElementById('businessDocuments').appendChild(createDocumentCard(indexedDocument));
-  });
+  const businessDocuments = window.document.getElementById('businessDocuments');
+  if (businessDocuments){
+    stateRecord.documents.forEach(indexedDocument => {
+      businessDocuments.appendChild(createDocumentCard(indexedDocument));
+    });
+  }
 
   function createDocumentCard(document){
     const button = documentElement('button', 'igcard');

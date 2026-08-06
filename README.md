@@ -2,7 +2,7 @@
 
 This repository is an independent, reusable version of the supplied W.Sutherland presentation. It retains the original visual theme, responsive layouts, page transitions, document preview modal, carousels, fonts and image quality, but it does not depend on the W.Sutherland repository or its Git history.
 
-The default passcode is **`0000`**.
+The current proposal passcode is **`2481`**.
 
 ## Preview locally
 
@@ -12,7 +12,7 @@ From the repository root:
 python3 -m http.server 4173 --directory site
 ```
 
-Open `http://localhost:4173/` and enter `0000`. The site is entirely static; there is no build or package-install step.
+Open `http://localhost:4173/` and enter `2481`. The site is entirely static; there is no build or package-install step.
 
 ## Start a new proposal
 
@@ -21,9 +21,9 @@ Edit [`site/data/template-config.js`](site/data/template-config.js). This is the
 - `state`: `VIC`, `NSW` or `QLD`.
 - `proposal`: browser title, address, recipients, indicative cost and duration.
 - `supportingDocuments`: optional cost-plan workbooks shown on the Opinion of Probable Cost page.
-- `passcode`: currently fixed at `0000` as requested.
+- `passcode`: currently fixed at `2481` as requested.
 
-The default configuration includes the original `W.Sutherland - Cost Plan.xlsx` workbook exactly as supplied. Replace its registry entry when preparing a different proposal.
+The current proposal has no supporting cost-plan workbook configured. Add one only when a project-specific workbook should be available to the recipient.
 
 The page order is:
 
@@ -38,7 +38,7 @@ The page order is:
 9. Business Details
 10. Closing / Let's Meet
 
-Case Studies is intentionally empty. Add case-study cards only when the project-specific selection is confirmed.
+Case Studies is populated from portfolio project IDs in `site/data/template-config.js`. The current proposal features Canterbury, Terralsole and Mermaid in that order.
 
 ### Cost-page workbook example
 
@@ -103,7 +103,7 @@ When the workbook order changes, update the index to match it and retain each ca
 
 ## Brand and theme
 
-The supplied `W. TEMPLATE.png` is stored as `site/w-template.png` and is the active proposal mark. Source fonts, imagery, colors, spacing, responsive rules and interaction patterns are kept local in `site/`; nothing is fetched from the source repository at runtime.
+The supplied W.FARNHAM artwork is stored as `site/w-farnham.png` and is the active proposal mark. Source fonts, imagery, colors, spacing, responsive rules and interaction patterns are kept local in `site/`; nothing is fetched from the source repository at runtime.
 
 ## Validate before publishing
 
