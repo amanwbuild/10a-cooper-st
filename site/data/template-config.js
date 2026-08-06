@@ -18,7 +18,7 @@ window.W_TEMPLATE_CONFIG = Object.freeze({
     recipients: "Melissa & Rob",
     fullAddress: "10A Cooper St, Byron Bay NSW 2481.",
     indicativeCost: "A$5.48M",
-    duration: "20–22"
+    duration: "16"
   },
   caseStudies: ["mermaid", "canterbury", "terralsole"],
   supportingDocuments: [

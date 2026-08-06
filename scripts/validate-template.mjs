@@ -31,6 +31,8 @@ function checkFile(relativePath, label){
 }
 
 check(config.passcode === '2481', 'Passcode must remain 2481 for this proposal.');
+check(config.proposal.duration === '16', 'The proposal duration must be 16 months.');
+check(html.includes('We anticipate a 16 month construction program, start to finish.'), 'The cost-page construction duration must be 16 months.');
 checkFile(config.brand.logo, 'Brand logo');
 
 const expectedPages = [
