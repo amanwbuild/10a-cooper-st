@@ -124,9 +124,6 @@
   if (!stateRecord) throw new Error(`Unsupported state: ${activeState}`);
 
   document.documentElement.dataset.state = activeState;
-  document.getElementById('businessStateName').textContent = stateRecord.name;
-  document.getElementById('businessStateCode').textContent = `${activeState} · state-specific`;
-
   const businessCard = document.createElement('div');
   businessCard.className = 'trade';
   const businessHead = document.createElement('div');
