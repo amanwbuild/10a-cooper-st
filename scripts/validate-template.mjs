@@ -49,8 +49,8 @@ portfolio.forEach((project, index) => {
 check(config.pages.find(page => page.id === 'cost')?.title === 'Opinion of Probable Cost', 'The cost-page title must be Opinion of Probable Cost.');
 check(config.pages.find(page => page.id === 'case-studies')?.title === 'Case Studies', 'The case-studies title must be Case Studies.');
 check(/<div id="caseStudyProjects"><\/div>/.test(html), 'The Case Studies mount point is missing.');
-const expectedCaseStudies = ['canterbury', 'terralsole', 'mermaid'];
-check(JSON.stringify(config.caseStudies) === JSON.stringify(expectedCaseStudies), 'Case Studies must be Canterbury, Terralsole and Mermaid.');
+const expectedCaseStudies = ['mermaid', 'canterbury', 'terralsole'];
+check(JSON.stringify(config.caseStudies) === JSON.stringify(expectedCaseStudies), 'Case Studies must be Mermaid, Canterbury and Terralsole.');
 for (const projectId of config.caseStudies) {
   check(portfolio.some(project => project.id === projectId), `Unknown case study project: ${projectId}`);
 }

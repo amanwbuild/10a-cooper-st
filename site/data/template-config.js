@@ -20,7 +20,7 @@ window.W_TEMPLATE_CONFIG = Object.freeze({
     indicativeCost: "A$5.48M",
     duration: "20–22"
   },
-  caseStudies: ["canterbury", "terralsole", "mermaid"],
+  caseStudies: ["mermaid", "canterbury", "terralsole"],
   supportingDocuments: [
     {
       name: "2026-08-06 · Cost Plan Markup v1",
