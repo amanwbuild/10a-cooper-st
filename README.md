@@ -38,7 +38,7 @@ The page order is:
 9. Business Details
 10. Closing / Let's Meet
 
-Case Studies is populated from portfolio project IDs in `site/data/template-config.js`. The current proposal features Canterbury, Terralsole and Mermaid in that order.
+Case Studies is populated from portfolio project IDs in `site/data/template-config.js`. The current proposal features Canterbury, Terralsole and Mermaid in that order. Featured case studies are automatically removed from the later W. Portfolio page so projects are not repeated.
 
 ### Cost-page workbook example
 

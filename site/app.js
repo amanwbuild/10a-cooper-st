@@ -109,6 +109,7 @@
     caseStudy.removeAttribute('data-project');
     caseStudy.dataset.caseStudy = projectId;
     caseStudyRoot.appendChild(caseStudy);
+    source.remove();
   });
 
   // ---- reusable proposal document library ----
