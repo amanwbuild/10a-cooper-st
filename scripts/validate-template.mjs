@@ -47,6 +47,11 @@ portfolio.forEach((project, index) => {
   check(project.order === index + 1, `Portfolio order gap at ${project.name}.`);
   check(html.includes(`data-project="${project.id}"`), `Missing portfolio card: ${project.id}`);
 });
+const expectedUnderConstruction = ['aqua', 'hedges', 'esplanade', 'hambleton', 'marine-parade'];
+check(
+  JSON.stringify(portfolio.filter(project => project.category === 'Under Construction').map(project => project.id)) === JSON.stringify(expectedUnderConstruction),
+  'Under Construction must be ordered Aqua, Hedges, Esplanade, Hambleton and Marine Parade.'
+);
 
 check(config.pages.find(page => page.id === 'cost')?.title === 'Opinion of Probable Cost', 'The cost-page title must be Opinion of Probable Cost.');
 check(config.pages.find(page => page.id === 'case-studies')?.title === 'Case Studies', 'The case-studies title must be Case Studies.');

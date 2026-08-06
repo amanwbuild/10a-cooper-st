@@ -97,7 +97,7 @@ The Detailed Proposal Example page is populated entirely from the proposal docum
 
 ## Portfolio order
 
-[`site/data/portfolio-index.js`](site/data/portfolio-index.js) mirrors the supplied `Projects in order.xlsx` workbook exactly. The browser reorders the existing portfolio cards from that index at startup, preserving the original card and carousel components.
+[`site/data/portfolio-index.js`](site/data/portfolio-index.js) was initialised from the supplied `Projects in order.xlsx` workbook and carries proposal-specific ordering changes. The browser reorders the existing portfolio cards from that index at startup, preserving the original card and carousel components. For this proposal, Under Construction is ordered Aqua, Hedges, Esplanade, Hambleton and Marine Parade.
 
 When the workbook order changes, update the index to match it and retain each card's `data-project` identifier in `site/index.html`.
 
